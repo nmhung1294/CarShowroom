@@ -1,0 +1,65 @@
+<%- include('header')%>
+    <!-- =============================================== -->
+    <%- include('aside')%>
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <h1>
+                    Car Showroom For Manager
+                </h1>
+            </section>
+            <!-- Main content -->
+            <section class="content">
+
+                <div class="box">
+                    <div class="box-body">
+                        <div class="row">
+                            <div class="col-md-4">
+                                
+                                <form action="" method="POST" role="form">
+                                    <legend>Đơn hàng mới</legend>
+                                
+                                    <div class="form-group">
+                                        <label for="date">Ngày:</label>
+                                        <input type="date" class="form-control" id="date" name="date" required>
+                                    </div>
+                                
+                                    <div class="form-group">
+                                        <label for="status">Trạng thái:</label>
+                                        <input type="text" class="form-control" id="status" name="status" placeholder="Nhập trạng thái" required>
+                                    </div>
+                                
+                                    <div class="form-group">
+                                        <label for="cus_id">ID Khách hàng:</label>
+                                        <input type="text" class="form-control" id="cus_id" name="cus_id" placeholder="Nhập ID khách hàng" required>
+                                    </div>
+                                
+                                    <div class="form-group">
+                                        <label for="sal_id">ID Nhân viên:</label>
+                                        <input type="text" class="form-control" id="sal_id" name="sal_id" placeholder="Nhập ID nhân viên" required>
+                                    </div>
+                                
+                                    <div class="form-group">
+                                        <label for="car_id">ID Xe:</label>
+                                        <input type="text" class="form-control" id="car_id" name="car_id" placeholder="Nhập ID xe" required>
+                                    </div>
+                                
+                                    <div class="box-footer">
+                                        <button type="submit" class="btn btn-success">Lưu</button>
+                                        <a href="/orders" class="btn btn-primary">Quay lại</a>
+                                    </div>
+                                </form>
+                                
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+            <!-- /.content -->
+        </div>
+        <!-- /.content-wrapper -->
+
+        <%- include('footer')%>

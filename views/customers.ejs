@@ -1,0 +1,69 @@
+<%- include('header')%>
+<!-- =============================================== -->
+<%- include('aside')%>
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <h1>
+      Car Showroom For Manager
+    </h1>
+
+  <!-- Main content -->
+  <section class="content">
+
+    <div class="box">
+      <div class="box-body">
+        <form action="" method="get" class="form-inline" role="form">
+                      
+          <div class="form-group">
+              <input type="text" class="form-control" id="" name="name" placeholder="">
+          </div>
+          <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
+          <a href="/add-customers" class="btn btn-success pull-right"><i class="fa fa-plus"></i> Thêm mới</a>
+      </form>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Mã Khách hàng</th>
+              <th>Họ và tên</th>
+              <th>Số điện thoại</th>
+              <th>Email</th>
+              <th>Địa chỉ</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <%for (let cus of res){  %>
+            <tr>
+                <td scope="row"> <%=cus.cus_id%></td>
+                <td><%=cus.name%></td>
+                <td><%=cus.phone_number%></td>
+                <td><%=cus.email%></td>
+                <td><%=cus.address%></td>
+                <td class="text-right">
+                  <a href="/edit-customers/<%=cus.cus_id%>" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i> Sửa</a>
+                  <a href="/delete-customer/<%=cus.cus_id%>" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> Xóa</a>
+                </td>
+            </tr>
+            <%}%>
+          </tbody>
+        </table>
+      </div>
+      <div class="box-footer">
+        
+        <ul class="pagination">
+          <li><a href="/customers/?page=<%=_page-1%>">&laquo;</a></li>
+          <% for(i = 1; i <= totalPage;++i){ %>
+            <li><a href="/customers/?page=<%=i%>" class="active"><%=i%></a></li>
+          <%}%>
+          <li><a href="/customers/?page=<%=_page < totalPage ? _page + 1 : totalPage%>">&raquo;</a></li>
+        </ul>
+        
+      </div>
+  </section>
+  <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+
+<%- include('footer')%>

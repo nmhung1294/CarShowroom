@@ -1,0 +1,45 @@
+<%- include('header')%>
+    <!-- =============================================== -->
+    <%- include('aside')%>
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <h1>
+                    Car Showroom For Manager
+                </h1>
+            </section>
+            <!-- Main content -->
+            <section class="content">
+
+                <div class="box">
+                    <div class="box-body">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <form action="" method="POST" role="form">
+                                    <legend>Chỉnh sửa thông tin thanh toán</legend>
+                                
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" id="ord_id" name="ord_id" placeholder="Input field" value="<%=res.ord_id%>">
+                                        <input type="text" class="form-control" id="cus_id" name="cus_id" placeholder="Input field" value="<%=res.cus_id%>">
+                                        <input type="number" class="form-control" id="deposit" name="deposit" placeholder="Input field" value="<%=res.deposit%>">
+                                        <input type="text" class="form-control" id="status" name="status" placeholder="Input field" value="<%=res.status%>">
+                                    </div>
+                                    <div class="box-footer">
+                                        <button type="submit" class="btn btn-success">Lưu</button>
+                                        <a href="/payments" class="btn btn-primary">Quay lại</a>
+                                    </div>
+                                </form>
+                                
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+            <!-- /.content -->
+        </div>
+        <!-- /.content-wrapper -->
+
+        <%- include('footer')%>

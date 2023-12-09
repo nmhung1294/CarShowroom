@@ -1,0 +1,53 @@
+<%- include('header')%>
+    <!-- =============================================== -->
+    <%- include('aside')%>
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <h1>
+                    Car Showroom For Manager
+                </h1>
+            </section>
+            <!-- Main content -->
+            <section class="content">
+
+                <div class="box">
+                    <div class="box-body">
+                        <div class="row">
+                            <div class="col-md-4">
+                                
+                                <form action="/edit-employee" method="POST" role="form">
+                                    <legend>Chỉnh sửa thông tin nhân viên</legend>
+                                
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" id="sal_id" name="sal_id" placeholder="Input field" value="<%=res.sal_id%>">
+                                        <input type="text" class="form-control" id="name" name="name" placeholder="Input field" value="<%=res.name%>">
+                                        <input type="text" class="form-control" id="email" name="email" placeholder="Input field" value="<%=res.email%>">
+                                        <input type="text" class="form-control" id="phone_number" name="phone_number" placeholder="Input field" value="<%=res.phone_number%>">
+                                        <input type="text" class="form-control" id="position" name="position" placeholder="Input field" value="<%=res.position%>">
+                                        <input type="number" class="form-control" id="salary" name="salary" placeholder="Input field" value="<%=res.salary%>">
+                                        <input type="text" class="form-control" id="report_to" name="report_to" placeholder="Input field" value="<%=res.report_to%>">
+                                    </div>
+                                
+                                    <div class="box-footer">
+                                        <button type="submit" class="btn btn-success">Lưu</button>
+                                        <a href="/employees" class="btn btn-primary">Quay lại</a>
+                                    </div>
+                                </form>
+                                
+                                
+                                    
+                                </form>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+            <!-- /.content -->
+        </div>
+        <!-- /.content-wrapper -->
+
+        <%- include('footer')%>

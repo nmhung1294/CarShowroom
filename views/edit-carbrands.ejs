@@ -1,0 +1,48 @@
+<%- include('header')%>
+    <!-- =============================================== -->
+    <%- include('aside')%>
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <h1>
+                    Car Showroom For Manager
+                </h1>
+            </section>
+            <!-- Main content -->
+            <section class="content">
+
+                <div class="box">
+                    <div class="box-body">
+                        <div class="row">
+                            <div class="col-md-4">
+                                
+                                <form action="/edit-carbrands" method="POST" role="form">
+                                    <legend>Hãng xe mới</legend>
+                                
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" id="bra_id" name="bra_id" placeholder="Input field" value="<%=res.bra_id%>">
+                                        <input type="text" class="form-control" id="name" name="name" placeholder="Input field" value="<%=res.brand_name%>">
+                                        <input type="text" class="form-control" id="description" name="description" placeholder="Input field" value="<%=res.description%>">
+                                    </div>
+                                
+                                    <div class="box-footer">
+                                        <button type="submit" class="btn btn-success">Lưu</button>
+                                        <a href="/car_brands" class="btn btn-primary">Quay lại</a>
+                                    </div>
+                                </form>
+                                
+                                    
+                                </form>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+            <!-- /.content -->
+        </div>
+        <!-- /.content-wrapper -->
+
+        <%- include('footer')%>
