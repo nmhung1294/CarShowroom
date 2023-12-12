@@ -5,11 +5,13 @@ const query = util.promisify(_connect.query).bind(_connect);
 const Customer = require('../model/customersModel');
 
 exports.customers =  async function(req, res){
-    Customer.getAll(req, function (err, result, totalPage, _page){
+    Customer.getAll(req, function (err, result, totalPage, _page, id){
+        if (err) console.log(err);
         res.render('customers',{
             res : result,
             totalPage : totalPage,
-            _page: _page
+            _page: _page,
+            id: id,
         });
     })
 }
@@ -37,4 +39,14 @@ exports.add_cus_from_cus = async function(req, res) {
     Customer.add_cus_from_cus(req, function(){
         res.redirect('/home');
     })
+}
+
+exports.add_cus = async function(req, res) {
+    Customer.add_cus(req, function(){
+        res.redirect('/customers');
+    })
+}
+
+exports.add_customer = async function(req, res) {
+    res.render('add-customers');
 }

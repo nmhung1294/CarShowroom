@@ -57,7 +57,7 @@
         <ul class="pagination">
           <li><a href="#">&laquo;</a></li>
           <% for(i = 1; i < totalPage;++i){ %>
-            <li><a href="#" class="active"><%=i%></a></li>
+            <li><a href="#" class="<%=_page ==i ? 'active' : ''%>"><%=i%></a></li>
           <%}%>
           <li><a href="#">&raquo;</a></li>
         </ul>

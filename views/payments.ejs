@@ -53,7 +53,7 @@
         <ul class="pagination">
           <li><a href="/payments/?page=<%=_page-1%>">&laquo;</a></li>
           <% for(i = 1; i <= totalPage;++i){ %>
-            <li><a href="/payments/?page=<%=i%>" class="active"><%=i%></a></li>
+            <li class="<%=_page == i ? 'active' : ''%>"><a href="/payments/?page=<%=i%>" class="active"><%=i%></a></li>
           <%}%>
           <li><a href="/payments/?page=<%=_page < totalPage ? _page + 1 : totalPage%>">&raquo;</a></li>
         </ul>

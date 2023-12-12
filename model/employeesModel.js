@@ -5,20 +5,26 @@ class Employee {
 }
 
 Employee.getAll = async function (req, callback) {
+    let _id = req.query.name;
     let _page = req.query.page ? req.query.page : 1;
-    let data = await query("select count(*) as total from salesmen");
+    let qryRows = "select count(*) as total from salesmen";
+    if (_id) {
+        var id = "%" + _id + "%"; // Thêm dấu % vào trước và sau id
+        qryRows += " where sal_id LIKE ? or name LIKE ?";
+    }
+    let data = await query(qryRows, [id, id]);
     let rows = data[0].total;
     let _limit = 3;
     let start_limit = (_page - 1)*_limit;
-    let id = req.query.sal_id;
     let qry = "select * from salesmen";
-    if (id) {
-        qry += " where sal_id = ?";
+    if (_id) {
+        var id = "%" + _id + "%";
+        qry += " where sal_id LIKE ? or name LIKE ?";
     }
     qry += " limit " + start_limit + ", " + _limit;
     let totalPage = Math.ceil(rows/_limit)
-    _connect.query(qry,[id],function(err, data){
-        callback(err, data, totalPage, _page);
+    _connect.query(qry,[id, id],function(err, data){
+        callback(err, data, totalPage, _page, _id);
     });
 }
 

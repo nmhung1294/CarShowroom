@@ -9,11 +9,12 @@ exports.del_carBrands = async function(req, res){
     });
 }
 exports.brands = async function(req, res){
-    Brand.getAll(req, function (err, result, totalPage, _page){
+    Brand.getAll(req, function (err, result, totalPage, _page, id){
         res.render('car-brands',{
             res : result,
             totalPage : totalPage,
-            _page: _page
+            _page: _page,
+            id : id
         });
     })
 }

@@ -53,9 +53,14 @@
       <div class="box-footer">
         
         <ul class="pagination">
-          <li><a href="/customers/?page=<%=_page-1%>">&laquo;</a></li>
+          <li><a href="/customers/?page=<%=_page > 1 ? _page-1 : 1%>">&laquo;</a></li>
           <% for(i = 1; i <= totalPage;++i){ %>
-            <li><a href="/customers/?page=<%=i%>" class="active"><%=i%></a></li>
+            <%if (id) { %>
+              <li class="<%=_page == i ? 'active' : ''%>"><a href="/customers/?page=<%=i%>&name=<%=id%> "><%=i%></a></li>
+            <%} 
+            else {%>
+              <li class="<%=_page == i ? 'active' : ''%>"><a href="/customers/?page=<%=i%>"><%=i%></a></li>
+           <% } %>
           <%}%>
           <li><a href="/customers/?page=<%=_page < totalPage ? _page + 1 : totalPage%>">&raquo;</a></li>
         </ul>

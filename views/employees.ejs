@@ -17,7 +17,7 @@
         <form action="" method="get" class="form-inline" role="form">
                       
           <div class="form-group">
-              <input type="text" class="form-control" id="" name="sal_id" placeholder="">
+              <input type="text" class="form-control" id="" name="name" placeholder="">
           </div>
           <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
           <a href="/add-employee" class="btn btn-success pull-right"><i class="fa fa-plus"></i> Thêm mới</a>
@@ -58,9 +58,14 @@
       <div class="box-footer">
         
         <ul class="pagination">
-          <li><a href="/employees/?page=<%=_page-1%>">&laquo;</a></li>
+          <li><a href="/employees/?page=<%=_page > 1 ? _page-1 : 1%>">&laquo;</a></li>
           <% for(i = 1; i <= totalPage;++i){ %>
-            <li><a href="/employees/?page=<%=i%>" class="active"><%=i%></a></li>
+            <%if (id) { %>
+              <li class="<%=_page == i ? 'active' : ''%>"><a href="/employees/?page=<%=i%>&name=<%=id%> "><%=i%></a></li>
+            <%} 
+            else {%>
+              <li class="<%=_page == i ? 'active' : ''%>"><a href="/employees/?page=<%=i%>"><%=i%></a></li>
+           <% } %>
           <%}%>
           <li><a href="/employees/?page=<%=_page < totalPage ? _page + 1 : totalPage%>">&raquo;</a></li>
         </ul>

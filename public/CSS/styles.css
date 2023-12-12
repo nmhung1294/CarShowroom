@@ -601,7 +601,22 @@ img {
   column-gap: 1rem;
   margin-bottom: 3.5rem;
 }
+.featured__img-container {
+  display: flex;
+  margin: 0 0 30px;
+}
 
+.featured__img {
+  width: 50%; /* Điều chỉnh giá trị này theo nhu cầu của bạn */
+}
+
+.featured__info {
+  padding-left: 30%; /* Điều chỉnh giá trị này theo nhu cầu của bạn */
+}
+
+.featured__filters {
+margin-bottom: 0px;
+}
 .featured__item {
   width: 48px;
   height: 48px;
@@ -614,6 +629,10 @@ img {
   font-size: var(--normal-font-size);
   cursor: pointer;
   transition: .3s;
+}
+
+.featured__content article {
+  margin: 15px;
 }
 
 .featured__item img {

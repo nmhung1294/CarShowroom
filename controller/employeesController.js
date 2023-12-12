@@ -1,11 +1,12 @@
 const Employee = require('../model/employeesModel');
 
 exports.employees =  async function(req, res){
-    Employee.getAll(req, function (err, result, totalPage, _page){
+    Employee.getAll(req, function (err, result, totalPage, _page, id){
         res.render('employees',{
             employees_res : result,
             totalPage : totalPage,
-            _page: _page
+            _page: _page,
+            id : id
         });
         console.log(_page);
     })
