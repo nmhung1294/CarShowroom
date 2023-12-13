@@ -16,14 +16,41 @@
                     <div class="box-body">
                         <div class="row">
                             <div class="col-md-4">
-                                <form action="" method="POST" role="form" enctype="multipart/form-data">
-                                    <legend>them xe moi</legend>
+                                <form action="/add-cars" method="POST" role="form" enctype="multipart/form-data">
+                                    <legend>Nhập</legend>
                                 
                                     <div class="form-group">
-                                        <input type="text" class="form-control" id="" placeholder="Input field">
+                                        <input type="text" class="form-control" id="brand" name="brand" placeholder="Tên Hãng Xe">
                                     </div>
                                     <div class="form-group">
-                                        <input type="file" class="form-control" id="" name = "image" title="Image">
+                                        <input type="text" class="form-control" id="model" name="model" placeholder="Model">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="number" class="form-control" id="priceEach" name="priceEach" placeholder="Giá mỗi chiếc">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="number" class="form-control" id="amount" name="amount" placeholder="Số Lượng">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="date" class="form-control" id="publish" name="publish" placeholder="Năm Sản Xuất">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" id="color" name="color" placeholder="Màu">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" id="status" name="status" placeholder="Trạng thái">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="number" class="form-control" id="mileage" name="mileage" placeholder="Quãng đường đi được(mile)">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" id="car_descript" name="car_descript" placeholder="Mô tả xe">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="file" onchange="readURL1(this)" class="form-control" id="logo" name = "image1" title="Image">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="file" onchange="readURL2(this)" class="form-control" id="car_img" name = "image2" title="Image">
                                     </div>
                                     <div class="box-footer">
                                         <button type="submit" class="btn btn-success">Lưu</button>
@@ -35,10 +62,14 @@
                             </div>
                             <div class="col-md-4">
                                     <a href ="#" class="thumbnail">
-                                        <img src="img/featured5.png">
+                                        <img id="show" src="">
                                     </a>
-                                
                             </div>
+                            <div class="col-md-4">
+                                <a href ="#" class="thumbnail">
+                                    <img id="show2" src="">
+                                </a>
+                        </div>
                         </div>
                     </div>
                 </div>
@@ -49,3 +80,25 @@
         <!-- /.content-wrapper -->
 
         <%- include('footer')%>
+        <script>
+            function readURL1(input) {
+                
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        $('#show').attr('src', e.target.result);
+                    };
+                    reader.readAsDataURL(input.files[0]);
+                }
+            }
+            function readURL2(input) {
+                
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        $('#show2').attr('src', e.target.result);
+                    };
+                    reader.readAsDataURL(input.files[0]);
+                }
+            }
+        </script>

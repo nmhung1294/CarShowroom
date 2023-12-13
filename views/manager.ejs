@@ -14,6 +14,25 @@
 
       <div class="box">
         <div class="box-body">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>BEST SALE MAN</th>
+                <th>TOTAL</th>
+              </tr>
+            </thead>
+            <tbody>
+              <%for(let p of result) {%>
+                <tr>
+                  <td scope="row">
+                    <%=p.name%>
+                  </td>
+                  <td>
+                    <%=p.total %>
+                  </td>
+                <%}%>
+            </tbody>
+          </table>
         </div>
 
     </section>

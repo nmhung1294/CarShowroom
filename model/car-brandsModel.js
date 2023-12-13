@@ -65,8 +65,8 @@ Brand.add_carbrand = async function(req, callback) {
     let rows = data[0].total;
     let bra_id = brand_name.slice(0, 3).toUpperCase() + (rows + 1);
     try {
-        let qry = "INSERT INTO carbrands VALUES (?, ?, ?)";
-        await query(qry, [bra_id, brand_name, description]);
+        let qry = "INSERT INTO carbrands VALUES (?, ?, ?, ?)";
+        await query(qry, [bra_id, brand_name, description, 'later']);
         callback();
     } catch (error) {
         console.error(error);
@@ -75,26 +75,29 @@ Brand.add_carbrand = async function(req, callback) {
 
 Brand.del_carbrands = function(req, callback){
     let bra_id_to_delete = req.params.bra_id; // bra_id bạn muốn xóa
+    let result = _connect.query("SELECT brand_name FROM carbrands WHERE bra_id = " + bra_id_to_delete);
+    let brand_name = result[0];
 
     // Xóa hoặc cập nhật các dòng tương ứng trong bảng 'cars'
     let sql = `DELETE FROM cars WHERE bra_id = ?`;
     let data = [bra_id_to_delete];
     _connect.query(sql, data, (error, results) => {
         if (error) {
-            return console.error(error.message);
+            return console.error(error);
         }
              // Xóa hoặc cập nhật các dòng tương ứng trong bảng 'imports'
-        sql = `DELETE FROM imports WHERE bra_id = ?`;
-        _connect.query(sql, data, (error, results) => {
-            if (error) {
-                return console.error(error.message);
-            }
+             let sql = `DELETE FROM imports WHERE brand_name = '${brand_name}'`;
+             _connect.query(sql, (error, results) => {
+                 if (error) {
+                     return console.error(error);
+                 }
+             
         
             // Cuối cùng, xóa dòng trong bảng 'carbrands'
             sql = `DELETE FROM carbrands WHERE bra_id = ?`;
             _connect.query(sql, data, (error, results) => {
                 if (error) {
-                    return console.error(error.message);
+                    return console.error(error);
                 }
                 else {
                     callback();

@@ -1,1 +1,2 @@
-const util = require('node:util');
+
+            result: data
