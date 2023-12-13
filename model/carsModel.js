@@ -49,21 +49,19 @@ Car.add_cars = async function (req, callback) {
         console.log(car_img);
 
         let data = await query("select count(*) as total from imports");
-        let rows = data[0].total +1;
+        let rows = data[0].total + 1;
         let result = await query("SELECT DATE(CURRENT_DATE) as date");
         let date = result[0].date;
-    
+
         let qry = "INSERT INTO imports VALUES (?, ?, ?, ?, ?, ?)";
         await query(qry, [rows, date, amount, priceEach, brand, model]);
 
         let results = await query('SELECT * FROM carbrands WHERE brand_name = ?', [brand]);
-        console.log(results);
         if (results.length === 0) {
             data = await query("select count(*) as total from carbrands");
             rows = data[0].total;
             let bra_id = brand.slice(0, 3).toUpperCase() + (rows + 1);
-            console.log(bra_id);
-            await query('INSERT INTO carbrands (bra_id, brand_name, description, logo) VALUES (?, ?, ?, ?)', [bra_id, brand,'later',logo]);
+            await query('INSERT INTO carbrands (bra_id, brand_name, description, logo) VALUES (?, ?, ?, ?)', [bra_id, brand, 'later', logo]);
             let car_id = (brand.slice(0, 3) + model.slice(0, 3)).toUpperCase();
             console.log(car_id);
             let result = await query(`SELECT bra_id FROM carbrands WHERE brand_name = '${brand}'`);
@@ -82,6 +80,28 @@ Car.add_cars = async function (req, callback) {
             await query(`INSERT INTO cars (car_id, bra_id, model, Year, color, status, mileage, price, car_descript, image) VALUES ('${carData.car_id}', '${carData.bra_id}', '${carData.model}', '${carData.Year}', '${carData.color}', '${carData.status}', ${carData.mileage}, ${carData.price}, '${carData.car_descript}', '${carData.image}')`);
             callback();
         }
+        else {
+            let result = await query('SELECT * FROM cars WHERE model = ?', [model]);
+            if (result.length === 0) {
+                let bra_id = brand.slice(0, 3).toUpperCase();
+                let car_id = (bra_id + model.slice(0, 3)).toUpperCase();
+                let result = await query(`SELECT bra_id FROM carbrands WHERE brand_name LIKE ?`, [`%${brand}%`]);
+                let carData = {
+                    car_id: car_id,
+                    bra_id: result[0].bra_id,
+                    model: model,
+                    Year: publish,
+                    color: color,
+                    status: status,
+                    mileage: mileage,
+                    price: priceEach,
+                    car_descript: car_descript,
+                    image: car_img
+                };
+                await query(`INSERT INTO cars SET ?`, carData);
+            }
+            callback();
+        }        
     } catch (err) {
         console.log(err);
     }

@@ -17,7 +17,7 @@
           <table class="table">
             <thead>
               <tr>
-                <th>BEST SALE MAN</th>
+                <th>BEST</th>
                 <th>TOTAL</th>
               </tr>
             </thead>
@@ -29,6 +29,33 @@
                   </td>
                   <td>
                     <%=p.total %>
+                  </td>
+                <%}%>
+            </tbody>
+          </table>
+          <br>
+          <div>
+            <h2>KHO</h2>
+          </div>
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Hãng Xe</th>
+                <th>Model</th>
+                <th>Số Lượng</th>
+              </tr>
+            </thead>
+            <tbody>
+              <%for(let p of results) {%>
+                <tr>
+                  <td scope="row">
+                    <%=p.brand_name%>
+                  </td>
+                  <td>
+                    <%=p.car_model%>
+                  </td>
+                  <td>
+                    <%=p.remaining_cars%>
                   </td>
                 <%}%>
             </tbody>

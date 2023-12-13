@@ -1,2 +1,1 @@
-
-            result: data
+remaining_cars
