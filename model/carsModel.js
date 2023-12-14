@@ -33,7 +33,6 @@ Car.getAll = async function (req, callback) {
 
 Car.add_cars = async function (req, callback) {
     try {
-        console.log(req.body);
         const brand = req.body.brand;
         const model = req.body.model;
         const priceEach = req.body.priceEach;
@@ -45,14 +44,10 @@ Car.add_cars = async function (req, callback) {
         const car_descript = req.body.car_descript;
         const logo = req.files['image1'][0].originalname;
         const car_img = req.files['image2'][0].originalname;
-        console.log(logo);
-        console.log(car_img);
-
         let data = await query("select count(*) as total from imports");
         let rows = data[0].total + 1;
         let result = await query("SELECT DATE(CURRENT_DATE) as date");
         let date = result[0].date;
-
         let qry = "INSERT INTO imports VALUES (?, ?, ?, ?, ?, ?)";
         await query(qry, [rows, date, amount, priceEach, brand, model]);
 
@@ -63,7 +58,6 @@ Car.add_cars = async function (req, callback) {
             let bra_id = brand.slice(0, 3).toUpperCase() + (rows + 1);
             await query('INSERT INTO carbrands (bra_id, brand_name, description, logo) VALUES (?, ?, ?, ?)', [bra_id, brand, 'later', logo]);
             let car_id = (brand.slice(0, 3) + model.slice(0, 3)).toUpperCase();
-            console.log(car_id);
             let result = await query(`SELECT bra_id FROM carbrands WHERE brand_name = '${brand}'`);
             let carData = {
                 car_id: car_id,

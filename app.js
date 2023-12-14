@@ -46,7 +46,6 @@ app.get('/manager', checkLogin, async function (req, res) {
                     + ") as sold_cars ON cars.car_id = sold_cars.car_id";
     _connect.query(qry2, function(err, data){
         if (err) console.log(err);
-        console.log(data);
         res.render('manager', {
             result: result,
             results:data

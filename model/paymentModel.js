@@ -30,7 +30,6 @@ Payment.edit_payment = async function(req, callback){
                 console.log(err);
             }
             else {
-                console.log(result[0]);
                 callback(result);
             }
     });

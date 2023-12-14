@@ -1,1 +1,1 @@
-remaining_cars
+console.log

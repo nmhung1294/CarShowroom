@@ -8,7 +8,6 @@ exports.employees =  async function(req, res){
             _page: _page,
             id : id
         });
-        console.log(_page);
     })
 }
 

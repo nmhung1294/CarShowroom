@@ -8,7 +8,6 @@ module.exports = function(app, sstorage) {
     });
     app.post('/login', function(req, res) {
         let sql = "select sal_id, email, passwords from logins where email = ? and passwords = ?";
-        console.log(req.body);
         _connect.query(sql, [req.body.email, req.body.pass], (err, data) => {
             if (err || data.length == 0) {
                 console.log(err);
